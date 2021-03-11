@@ -10,7 +10,7 @@ Step-1:
 ![Login](https://github.com/csehammad/2FAUsingIdentityServer4/blob/main/demo/Login.png?raw=true)
  
 Step-2: 
-![Login](https://github.com/csehammad/2FAUsingIdentityServer4/blob/main/demo/Twilio-sms.png?raw=true)
+![Login](https://github.com/csehammad/2FAUsingIdentityServer4/blob/main/demo/Twilio-sms.jpg?Raw=True)
 
 Step-3: 
 ![Login](https://github.com/csehammad/2FAUsingIdentityServer4/blob/main/demo/code.png?raw=true)
