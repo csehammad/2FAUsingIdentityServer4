@@ -103,7 +103,6 @@ namespace IdentityServerHost.Quickstart.UI
             var username = HttpContext.Session.GetString("_user");
 
             var user = _users.FindByUsername(username);
-
           
             if (code==model.VerificationCode)
             {
@@ -140,8 +139,6 @@ namespace IdentityServerHost.Quickstart.UI
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginInputModel model, string button)
         {
-
-
 
 
             // check if we are in the context of an authorization request
@@ -196,25 +193,28 @@ namespace IdentityServerHost.Quickstart.UI
                             ExpiresUtc = DateTimeOffset.UtcNow.Add(AccountOptions.RememberMeLoginDuration)
                         };
                     };
+                    var is2FAEnabled = user.Claims.SingleOrDefault(s => s.Type == "2FA");
 
-                    if (user.Claims.SingleOrDefault(s => s.Type == "2FA") != null)
-                    {
-
-                        var phoneNumber = user.Claims.SingleOrDefault(s => s.Type == "PhoneNumber");
-
-                        if (phoneNumber != null)
+                    if (is2FAEnabled != null)
+                       {
+                        if (is2FAEnabled.Value == "1")
                         {
-                            StringBuilder sb = new StringBuilder();
-                            string verificationCode = GenerateNewRandom();
-                            sb.Append("Your Verification Code for 2FA Demo App: ");
-                            sb.Append(verificationCode);
-                            HttpContext.Session.SetString("_user", user.Username);
+                            var phoneNumber = user.Claims.SingleOrDefault(s => s.Type == "PhoneNumber");
 
-                            HttpContext.Session.SetString("_code", verificationCode);
-                            await _smsSender.SendSmsAsync("+"+phoneNumber.Value.ToString(), sb.ToString());
+                            if (phoneNumber != null)
+                            {
+                                StringBuilder sb = new StringBuilder();
+                                string verificationCode = GenerateNewRandom();
+                                sb.Append("Your Verification Code for 2FA Demo App: ");
+                                sb.Append(verificationCode);
+                                HttpContext.Session.SetString("_user", user.Username);
 
-                            //Kick off 2FA Auth
-                            return Redirect("VerifyCode");
+                                HttpContext.Session.SetString("_code", verificationCode);
+                                await _smsSender.SendSmsAsync("+" + phoneNumber.Value.ToString(), sb.ToString());
+
+                                //Kick off 2FA Auth
+                                return Redirect("VerifyCode");
+                            }
                         }
 
                     }

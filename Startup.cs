@@ -24,8 +24,11 @@ namespace _2FAUsingIdentityServer4
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddRazorPages();
-            services.AddIdentityServer()
+         
+        services.AddRazorPages();
+           
+            
+        services.AddIdentityServer()
         .AddInMemoryIdentityResources(Config.GetIdentityResources())
         .AddTestUsers(Config.GetUsers())
         .AddInMemoryClients(Config.GetClients())

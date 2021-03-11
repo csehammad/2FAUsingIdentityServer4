@@ -25,7 +25,7 @@ namespace _2FAUsingIdentityServer4
                     Claims = new []
                     {
                         new Claim("2FA", "1"),
-                        new Claim("PhoneNumber", "923212947101")
+                        new Claim("PhoneNumber", "+10000")
                     }
                 }
             };
