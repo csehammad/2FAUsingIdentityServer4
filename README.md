@@ -7,10 +7,10 @@ Two Factor Authentication Demo using IdentityServer4 and Twilio in .NET 5
 4. Run the Project. 
 
 Step-1: 
-![Login](https://github.com/csehammad/2FAUsingIdentityServer4/blob/main/demo/login.png?raw=true)
+![Login](https://github.com/csehammad/2FAUsingIdentityServer4/blob/main/demo/Login.png?raw=true)
  
 Step-2: 
-![Login](https://github.com/csehammad/2FAUsingIdentityServer4/blob/main/demo/twilio-sms.png?raw=true)
+![Login](https://github.com/csehammad/2FAUsingIdentityServer4/blob/main/demo/Twilio-snms.png?raw=true)
 
 Step-3: 
 ![Login](https://github.com/csehammad/2FAUsingIdentityServer4/blob/main/demo/code.png?raw=true)
